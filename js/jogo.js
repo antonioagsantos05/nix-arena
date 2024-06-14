@@ -160,8 +160,16 @@ $(document).ready(function() {
       var lista = $(listaId);
 
       jogadores.forEach(function(jogador) {
-        var btn = `<button class="btn px-5" style="background-color:#FFBF78; border: 2px solid #FF7D29">${jogador}</button>`;
+        var btn = `<button class="btn px-5 jogador-btn" data-jogador="${jogador}" style="background-color:#FFBF78; border: 2px solid #FF7D29">${jogador}</button>`;
         lista.append(btn);
+      });
+
+      // Ação ao clicar em um botão de jogador
+      $('.jogador-btn').click(function() {
+        var jogador = $(this).data('jogador');
+        $('#modalJogadorLabel').text(`Informações sobre o jogador ${jogador}`);
+        $('#modalJogadorBody').text(`Detalhes sobre o jogador ${jogador}.`);
+        $('#modalJogador').modal('show');
       });
     }
   }
