@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final da Partida</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../js/finalpartida.js"></script>
+</head>
+<body>
+<div class="container">
+    <!-- Detalhes da Partida -->
+    <div class="mt-5">
+        <h2 class="text-center mb-4">Detalhes da Partida</h2>
+        <div id="detalhesPartida" class="text-center">
+            <!-- Detalhes serão carregados dinamicamente -->
+        </div>
+    </div>
+
+    <!-- Placar de Sets -->
+    <div class="mt-5">
+        <h2 class="text-center mb-4">Placar de Sets</h2>
+        <div id="placarSets" class="text-center">
+            <!-- Placar será carregado dinamicamente -->
+        </div>
+    </div>
+
+    <!-- Estatísticas dos Jogadores -->
+    <div class="mt-5">
+        <h2 class="text-center mb-4">Estatísticas dos Jogadores</h2>
+        <div id="estatisticasJogadores" class="text-center">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Jogador</th>
+                    <th scope="col">Forehand (Acertos/Erros)</th>
+                    <th scope="col">Backhand (Acertos/Erros)</th>
+                    <th scope="col">Drop Shots (Acertos/Erros)</th>
+                    <th scope="col">Lobs (Acertos/Erros)</th>
+                    <th scope="col">Saque (Acertos/Erros)</th>
+                    <th scope="col">Smashs (Acertos/Erros)</th>
+                </tr>
+                </thead>
+                <tbody id="corpoTabela">
+                <!-- Linhas da tabela serão carregadas dinamicamente -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
