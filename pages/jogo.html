@@ -49,10 +49,10 @@
     </div>
 
     <!-- Games -->
-    <div class="row mt-">
+    <div class="row">
       <div class="col-md-6 offset-md-3 text-center">
         <h5>Games</h5>
-        <div id="games" class="set-info mb-4 d-flex justify-content-center align-items-center">
+        <div id="games" class="set-info mb-1 d-flex justify-content-center align-items-center">
           <div class="games text-center mt-2" style="font-size: 1.5rem;" id="gamesDupla1">0</div>
           <div style="font-size: 1.8rem;" class="mx-2">-</div>
           <div class="games text-center mt-2" style="font-size: 1.5rem;" id="gamesDupla2">0</div>
@@ -63,12 +63,12 @@
     <div class="container">
       <!-- Jogadores -->
       <div class="row justify-content-center align-items-center">
-        <div class="col-md-6 text-center">
+        <div class="col-md-3 text-center">
           <h5>Jogadores:</h5>
-          <div id="jogadoresDupla1" style="background: #fdffa2; margin: 0 auto; width: 80%; height: 20vh; border: 2px solid black; display: flex; flex-direction: column; gap: 10px; align-items: center; justify-content: center;">
+          <div id="jogadoresDupla1" style="background: #fdffa2; margin: 0 auto; width: 80%; height: 23vh; border: 2px solid black; display: flex; flex-direction: column; gap: 10px; align-items: center; justify-content: center;">
             <!-- Jogadores da Dupla 1 -->
           </div>
-          <div id="jogadoresDupla2" style="background: #fdffa2; margin: 0 auto; width: 80%; height: 20vh; border: 2px solid black; display: flex; flex-direction: column; gap: 10px; align-items: center; justify-content: center;">
+          <div id="jogadoresDupla2" style="background: #fdffa2; margin: 0 auto; width: 80%; height: 23vh; border: 2px solid black; display: flex; flex-direction: column; gap: 10px; align-items: center; justify-content: center;">
             <!-- Jogadores da Dupla 2 -->
           </div>
         </div>
@@ -116,25 +116,96 @@
     </div>
   </div>
 
-  <!-- Modal dinâmico de informações do jogador -->
-  <div class="modal fade" id="modalJogador" tabindex="-1" aria-labelledby="modalJogadorLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalJogadorLabel"></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+<!-- Modal -->
+<div class="modal fade" id="modalJogador" tabindex="-1" aria-labelledby="modalJogadorLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalJogadorLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row mb-3">
+          <div class="col-6">
+            <h5 class="modal-subtitle">Forehand</h5>
+            <div class="d-flex align-items-center">
+              <button class="btn btn-success mr-2 btn-acerto" data-movimento="forehand">Acerto</button>
+              <span class="acertos font-size-large">0</span>
+            </div>
+            <div class="d-flex align-items-center mt-2">
+              <button class="btn btn-danger mr-2 btn-erro" data-movimento="forehand">Erro</button>
+              <span class="erros font-size-large">0</span>
+            </div>
+          </div>
+          <div class="col-6">
+            <h5 class="modal-subtitle">Backhand</h5>
+            <div class="d-flex align-items-center">
+              <button class="btn btn-success mr-2 btn-acerto" data-movimento="backhand">Acerto</button>
+              <span class="acertos font-size-large">0</span>
+            </div>
+            <div class="d-flex align-items-center mt-2">
+              <button class="btn btn-danger mr-2 btn-erro" data-movimento="backhand">Erro</button>
+              <span class="erros font-size-large">0</span>
+            </div>
+          </div>
         </div>
-        <div class="modal-body" id="modalJogadorBody">
-          <!-- Conteúdo dinâmico do modal -->
+        <div class="row mb-3">
+          <div class="col-6">
+            <h5 class="modal-subtitle">Lobs</h5>
+            <div class="d-flex align-items-center">
+              <button class="btn btn-success mr-2 btn-acerto" data-movimento="lobs">Acerto</button>
+              <span class="acertos font-size-large">0</span>
+            </div>
+            <div class="d-flex align-items-center mt-2">
+              <button class="btn btn-danger mr-2 btn-erro" data-movimento="lobs">Erro</button>
+              <span class="erros font-size-large">0</span>
+            </div>
+          </div>
+          <div class="col-6">
+            <h5 class="modal-subtitle">Drop Shots</h5>
+            <div class="d-flex align-items-center">
+              <button class="btn btn-success mr-2 btn-acerto" data-movimento="dropShots">Acerto</button>
+              <span class="acertos font-size-large">0</span>
+            </div>
+            <div class="d-flex align-items-center mt-2">
+              <button class="btn btn-danger mr-2 btn-erro" data-movimento="dropShots">Erro</button>
+              <span class="erros font-size-large">0</span>
+            </div>
+          </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        <div class="row mb-3">
+          <div class="col-6">
+            <h5 class="modal-subtitle">Smashs</h5>
+            <div class="d-flex align-items-center">
+              <button class="btn btn-success mr-2 btn-acerto" data-movimento="smashs">Acerto</button>
+              <span class="acertos font-size-large">0</span>
+            </div>
+            <div class="d-flex align-items-center mt-2">
+              <button class="btn btn-danger mr-2 btn-erro" data-movimento="smashs">Erro</button>
+              <span class="erros font-size-large">0</span>
+            </div>
+          </div>
+          <div class="col-6">
+            <h5 class="modal-subtitle">Saque</h5>
+            <div class="d-flex align-items-center">
+              <button class="btn btn-success mr-2 btn-acerto" data-movimento="saque">Acerto</button>
+              <span class="acertos font-size-large">0</span>
+            </div>
+            <div class="d-flex align-items-center mt-2">
+              <button class="btn btn-danger mr-2 btn-erro" data-movimento="saque">Erro</button>
+              <span class="erros font-size-large">0</span>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
       </div>
     </div>
   </div>
+</div>
 
   <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -142,6 +213,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
   <!-- Custom script -->
   <script src="../js/jogo.js"></script>
+
+  <script src="../js/modal.js"></script>
 
 </body>
 </html>
