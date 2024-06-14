@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova Partida - Beach Tennis App</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<div class="container">
+  <h2 class="text-center mt-3">Nova Partida</h2>
+  <div class="row mt-3">
+    <div class="col-md-6 offset-md-3">
+      <form id="novaPartidaForm">
+        <div class="form-group">
+          <label for="nomePartida">Nome da Partida</label>
+          <input type="text" class="form-control" id="nomePartida" placeholder="Digite o nome da partida" required>
+        </div>
+        <div class="form-group">
+          <label for="dataPartida">Data da Partida</label>
+          <input type="date" class="form-control" id="dataPartida" required>
+        </div>
+        <div class="form-group">
+          <label for="horarioPartida">Horário da Partida</label>
+          <input type="time" class="form-control" id="horarioPartida" required>
+        </div>
+
+        <div class="form-group">
+          <label for="dupla1">Dupla 1</label>
+          <select class="form-control" id="dupla1" required>
+            <option value="">Selecione uma dupla</option>
+            <!-- Opções de duplas serão preenchidas dinamicamente via JavaScript -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="dupla2">Dupla 2</label>
+          <select class="form-control" id="dupla2" required>
+            <option value="">Selecione outra dupla</option>
+            <!-- Opções de duplas serão preenchidas dinamicamente via JavaScript -->
+          </select>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-block" id="btnCadastrarDupla">Cadastrar Nova Dupla</button>
+        <button id="btnIniciarPartida" type="submit" class="btn btn-primary" disabled>Iniciar Partida</button>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Cadastrar Dupla -->
+<div class="modal fade" id="cadastrarDuplaModal" tabindex="-1" role="dialog" aria-labelledby="cadastrarDuplaModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cadastrarDuplaModalLabel">Cadastrar Nova Dupla</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="cadastrarDuplaForm">
+          <div class="form-group">
+            <label for="nomeJogador1">Nome do Jogador 1</label>
+            <input type="text" class="form-control" id="nomeJogador1" placeholder="Digite o nome do Jogador 1" required>
+          </div>
+          <div class="form-group">
+            <label for="nomeJogador2">Nome do Jogador 2</label>
+            <input type="text" class="form-control" id="nomeJogador2" placeholder="Digite o nome do Jogador 2" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap JS and dependencies -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<!-- Custom script -->
+<script src="../js/novapartida.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo - Beach Tennis App</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+</head>
+<body>
+
+  <div class="container">
+    <h2 class="text-center mt-3">Jogo</h2>
+  
+    <div class=" container d-flex justify-content-center mt-3">
+
+        <div class="col-md-3">
+          <div class="set">
+            <div class=" font-weight-bold text-center" style="font-size: 1.5rem;" id="nomeDupla1">Dupla 1</div>
+            <div class="btn-placar-container d-flex justify-content-center align-items-center">
+              <button class="btn btn-placar" style="font-size: 1.8rem;" id="btnMenosDupla1">-</button>
+              <div class="pontos mx-3" style="font-size: 2.5rem;" id="pontosDupla1">0</div>
+              <button class="btn btn-placar" style="font-size: 1.8rem;" id="btnMaisDupla1">+</button>
+            </div>
+          </div>
+        </div>
+    
+        <div class="col-md-3">
+          <div class="set">
+            <div class=" font-weight-bold nome-dupla text-center" style="font-size: 1.5rem;" id="nomeDupla2">Dupla 2</div>
+            <div class="btn-placar-container d-flex justify-content-center align-items-center">
+              <button class="btn btn-placar" style="font-size: 1.8rem;" id="btnMenosDupla2">-</button>
+              <div class="mx-3" style="font-size: 2.5rem;" id="pontosDupla2">0</div>
+              <button class="btn btn-placar" style="font-size: 1.8rem;" id="btnMaisDupla2">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sets -->
+    <div class="row mt-3">
+      <div class="col-md-6 offset-md-3">
+        <h6 class="text-center">Sets Vencidos:</h6>
+        <div id="sets" class="set-info mb-4">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="set-info" style="font-size: 1.8rem;" id="setsDupla1">0</div>
+            </div>
+            <div class="col-md-6">
+              <div class="set-info" style="font-size: 1.8rem;" id="setsDupla2">0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Jogadores -->
+      <div class="row justify-content-center align-items-center ">
+        <div class="col-md-3">
+          <h5 class="text-center">Jogadores:</h5>
+          <div id="jogadoresDupla1" style="background: #fdffa2; margin: 0 auto; width: 80%; height: 20vh; border: 2px solid black; display: flex; flex-direction: column; gap: 10px; align-items: center; justify-content: center;">
+            <!-- Jogadores da Dupla 1 -->
+          </div>
+          <div id="jogadoresDupla2" style="background: #fdffa2; margin: 0 auto; width: 80%; height: 20vh; border: 2px solid black; display: flex; flex-direction: column; gap: 10px; align-items: center; justify-content: center;">
+            <!-- Jogadores da Dupla 2 -->
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom script -->
+  <script src="../js/jogo.js"></script>
+
+</body>
+</html>

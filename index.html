@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beach Tennis App</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  
+<div class="container">
+  <div id="content">
+    <div id="loginPage">
+      <h2 class="text-center">Login</h2>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="loginUsername">Usuário</label>
+          <input type="text" class="form-control" id="loginUsername" placeholder="Digite seu usuário">
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Senha</label>
+          <input type="password" class="form-control" id="loginPassword" placeholder="Digite sua senha">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+        <p class="text-center mt-3">Não tem uma conta? <a href="#" id="linkCadastro">Cadastre-se</a></p>
+      </form>
+    </div>
+
+    <div id="registerPage" style="display: none;">
+      <h2 class="text-center">Cadastro</h2>
+      <form id="registerForm">
+        <div class="form-group">
+          <label for="registerUsername">Usuário</label>
+          <input type="text" class="form-control" id="registerUsername" placeholder="Digite um usuário">
+        </div>
+        <div class="form-group">
+          <label for="registerPassword">Senha</label>
+          <input type="password" class="form-control" id="registerPassword" placeholder="Digite uma senha">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+        <p class="text-center mt-3">Já tem uma conta? <a href="#" id="linkLogin">Faça login</a></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap JS and dependencies -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<!-- Custom script -->
+<script src="js/login.js"></script>
+
+</body>
+</html>
