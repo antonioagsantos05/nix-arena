@@ -1,6 +1,10 @@
 $(document).ready(function() {
   // Carregar dados da partida atual do Local Storage
-  var partidaAtual = JSON.parse(localStorage.getItem('partidaAtual'));
+  var partidaAtual = JSON.parse(localStorage.getItem('partidaAtual')) || {
+    dupla1: 'Dupla 1',
+    dupla2: 'Dupla 2',
+    setsPartidaAtual: []
+  };
 
   // Exibir dados da partida
   $('#nomeDupla1').text(partidaAtual.dupla1);
@@ -22,8 +26,9 @@ $(document).ready(function() {
   atualizaGames();
 
   // Inicializar sets das duplas
-  var setsDupla1 = 0;
-  var setsDupla2 = 0;
+  var setsPartidaAtual = partidaAtual.setsPartidaAtual || [];
+  var setsDupla1 = setsPartidaAtual.filter(set => set.vencedor === partidaAtual.dupla1).length;
+  var setsDupla2 = setsPartidaAtual.filter(set => set.vencedor === partidaAtual.dupla2).length;
   atualizaSets();
 
   // Ação ao clicar nos botões de placar
@@ -99,37 +104,48 @@ $(document).ready(function() {
   }
 
   function verificaFimDoSet() {
-    if (gamesDupla1 >= 6 && gamesDupla1 >= gamesDupla2 + 2) {
-      setsDupla1++;
-      atualizaSets();
-      reiniciarSet();
-      $('#modalVitoriaSetBody').text(`Set finalizado! A dupla ${partidaAtual.dupla1} venceu o set.`);
-      $('#modalVitoriaSet').modal('show');
-    } else if (gamesDupla2 >= 6 && gamesDupla2 >= gamesDupla1 + 2) {
-      setsDupla2++;
-      atualizaSets();
-      reiniciarSet();
-      $('#modalVitoriaSetBody').text(`Set finalizado! A dupla ${partidaAtual.dupla2} venceu o set.`);
-      $('#modalVitoriaSet').modal('show');
-    } else if (gamesDupla1 === 7 && gamesDupla2 === 6) {
-      setsDupla1++;
-      atualizaSets();
-      reiniciarSet();
-      $('#modalVitoriaSetBody').text(`Set finalizado! A dupla ${partidaAtual.dupla1} venceu o set.`);
-      $('#modalVitoriaSet').modal('show');
-    } else if (gamesDupla2 === 7 && gamesDupla1 === 6) {
-      setsDupla2++;
-      atualizaSets();
-      reiniciarSet();
-      $('#modalVitoriaSetBody').text(`Set finalizado! A dupla ${partidaAtual.dupla2} venceu o set.`);
-      $('#modalVitoriaSet').modal('show');
-    } else if (gamesDupla1 === 7 && gamesDupla2 === 7) {
-      setsDupla1++;
-      setsDupla2++;
-      atualizaSets();
-      reiniciarSet();
-      $('#modalVitoriaSetBody').text(`Set finalizado! Ambas as duplas empataram e venceram o set.`);
-      $('#modalVitoriaSet').modal('show');
+    if (setsDupla1 === 2) {
+      // Vitória da dupla 1 no jogo
+      $('#modalVitoriaJogoBody').text(`Jogo finalizado! A dupla ${partidaAtual.dupla1} venceu o jogo.`);
+      $('#modalVitoriaJogo').modal('show');
+      desabilitarBotoes();
+    } else if (setsDupla2 === 2) {
+      // Vitória da dupla 2 no jogo
+      $('#modalVitoriaJogoBody').text(`Jogo finalizado! A dupla ${partidaAtual.dupla2} venceu o jogo.`);
+      $('#modalVitoriaJogo').modal('show');
+      desabilitarBotoes();
+    } else {
+      if (gamesDupla1 >= 6 && gamesDupla1 >= gamesDupla2 + 2) {
+        salvarSet(partidaAtual.dupla1);
+        atualizaSets();
+        reiniciarSet();
+        $('#modalVitoriaSetBody').text(`Set finalizado! A dupla ${partidaAtual.dupla1} venceu o set.`);
+        $('#modalVitoriaSet').modal('show');
+      } else if (gamesDupla2 >= 6 && gamesDupla2 >= gamesDupla1 + 2) {
+        salvarSet(partidaAtual.dupla2);
+        atualizaSets();
+        reiniciarSet();
+        $('#modalVitoriaSetBody').text(`Set finalizado! A dupla ${partidaAtual.dupla2} venceu o set.`);
+        $('#modalVitoriaSet').modal('show');
+      } else if (gamesDupla1 === 7 && gamesDupla2 === 6) {
+        salvarSet(partidaAtual.dupla1);
+        atualizaSets();
+        reiniciarSet();
+        $('#modalVitoriaSetBody').text(`Set finalizado! A dupla ${partidaAtual.dupla1} venceu o set.`);
+        $('#modalVitoriaSet').modal('show');
+      } else if (gamesDupla2 === 7 && gamesDupla1 === 6) {
+        salvarSet(partidaAtual.dupla2);
+        atualizaSets();
+        reiniciarSet();
+        $('#modalVitoriaSetBody').text(`Set finalizado! A dupla ${partidaAtual.dupla2} venceu o set.`);
+        $('#modalVitoriaSet').modal('show');
+      } else if (gamesDupla1 === 7 && gamesDupla2 === 7) {
+        salvarSet('empate');
+        atualizaSets();
+        reiniciarSet();
+        $('#modalVitoriaSetBody').text(`Set finalizado! O set terminou em empate.`);
+        $('#modalVitoriaSet').modal('show');
+      }
     }
   }
 
@@ -139,31 +155,52 @@ $(document).ready(function() {
     atualizaGames();
   }
 
+  function salvarSet(vencedor) {
+    // Criação do objeto set atual
+    var setAtual = {
+      vencedor: vencedor,
+      gamesDupla1: gamesDupla1,
+      gamesDupla2: gamesDupla2
+    };
+
+    // Adiciona o set atual ao array de sets da partidaAtual
+    setsPartidaAtual.push(setAtual);
+
+    // Atualiza o localStorage com os dados de setsPartidaAtual
+    partidaAtual.setsPartidaAtual = setsPartidaAtual;
+    localStorage.setItem('partidaAtual', JSON.stringify(partidaAtual));
+  }
+
   function atualizaGames() {
     $('#gamesDupla1').text(gamesDupla1);
     $('#gamesDupla2').text(gamesDupla2);
   }
 
   function atualizaSets() {
+    // Atualiza setsDupla1 e setsDupla2 com base nos setsPartidaAtual
+    setsPartidaAtual = partidaAtual.setsPartidaAtual || [];
+    setsDupla1 = setsPartidaAtual.filter(set => set.vencedor === partidaAtual.dupla1).length;
+    setsDupla2 = setsPartidaAtual.filter(set => set.vencedor === partidaAtual.dupla2).length;
+
     $('#setsDupla1').text(setsDupla1);
     $('#setsDupla2').text(setsDupla2);
   }
-
+  
   function loadJogadores(nomeDupla, listaId) {
     var duplas = JSON.parse(localStorage.getItem('duplas')) || [];
     var dupla = duplas.find(function(d) {
       return d.nome === nomeDupla;
     });
-
+  
     if (dupla) {
       var jogadores = dupla.jogadores;
       var lista = $(listaId);
-
+  
       jogadores.forEach(function(jogador) {
         var btn = `<button class="btn px-5 jogador-btn" data-jogador="${jogador}" style="background-color:#FFBF78; border: 2px solid #FF7D29">${jogador}</button>`;
         lista.append(btn);
       });
-
+  
       // Ação ao clicar em um botão de jogador
       $('.jogador-btn').click(function() {
         var jogador = $(this).data('jogador');
@@ -174,4 +211,3 @@ $(document).ready(function() {
     }
   }
 });
-
